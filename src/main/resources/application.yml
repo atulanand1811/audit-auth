@@ -1,0 +1,41 @@
+server:
+    port: 9400
+spring:
+
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:Auth
+    username: audit
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+        
+    application:
+        name: auditAuthentication
+messages:
+    logging:
+        start: Entering Function
+        tokenNotFound: Token not found
+        userCreated: User has been registered!
+        validJwtToken: JWT Token is Valid
+        invalidJwtToken: JWT Token is Invalid
+        loginSuccessful: Login success!
+        end: Leaving Function
+    exceptions:
+        registrationFailed: Registration has failed!
+        loginFailed: Login has failed!
+jwt:
+    secret: pod2rocks
+    expireToken: 30
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
